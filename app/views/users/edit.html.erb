@@ -1,0 +1,12 @@
+<h1><%= Const::STR_MSG_EDIT_USER_PROFILE %></h1>
+
+<%= form_for(@user) do |f| %>
+  <%= render Const::STR_URL_FIELDS, :f => f %>
+  <%= render Const::STR_URL_FORM_SUBMIT, :f => f,
+             :caption => Const::STR_MSG_SAVE_CHANGES %>
+<% end %>
+
+<div>
+  <%#= gravatar_for(@user) %>
+  <!-- <a href="http://gravatar.com/emails">change</a> -->
+</div>

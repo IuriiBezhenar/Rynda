@@ -1,0 +1,103 @@
+<% mode ||= "-" %>
+<table>
+  <tr>
+    <td><%= Const::STR_LABEL_CREATED_AT %></td>
+    <td><%= Const::STR_LABEL_STATUS_DATE %></td>
+    <td><%= Const::STR_LABEL_OPERABLE_REQUEST %></td>
+  </tr>
+  <tr>
+    <td>
+      <strong><%= format_local_ts(f.object.created_at) %></strong>
+    </td>
+    <td>
+      <strong><%= format_local_ts(f.object.status_date) %></strong>
+    </td>
+    <td>
+      <strong>
+        <% if f.object.service_request %>
+           <%= link_to f.object.service_request.request_info, f.object.service_request %>
+        <% else %>
+           -
+        <% end %>
+      </strong>
+    </td>
+  </tr>
+
+  <tr>
+    <td><%= Const::STR_LABEL_SERV_OPER_TYPE %></td>
+    <td><%= Const::STR_LABEL_STATUS %></td>
+    <td><%= Const::STR_LABEL_PERFORMING_COMMUNITY %></td>
+  </tr>
+  <tr>
+    <td>
+      <strong><%= f.object.type.name %></strong>
+    </td>
+    <td>
+      <strong><%= f.object.status.name %></strong>
+    </td>
+    <td>
+      <strong><%= f.object.prfm_community ? f.object.prfm_community.name : "-"  %></strong>
+    </td>
+  </tr>
+
+  <tr>
+    <td><%= Const::STR_LABEL_ASSIGNOR %></td>
+    <td colspan="2"><%= Const::STR_LABEL_INSTRUCTIONS %></td>
+  </tr>
+  <tr>
+    <td>
+      <% if mode == Const::STR_VALUE_SELECT_PERFORMER %>
+        <strong><%= current_user.name %></strong>
+      <% else %>
+        <% asnr = f.object.assignor %>
+        <strong><%= asnr ? asnr.name : "-" %></strong>
+      <% end %>
+    </td>
+    <td colspan="2">
+      <% if mode == Const::STR_VALUE_SELECT_PERFORMER %>
+        <%= f.text_area :descr %>
+      <% else %>
+        <strong><%= format_if_empty(f.object.descr) %></strong>
+      <% end %>
+    </td>
+  </tr>
+
+  <tr>
+    <td><%= Const::STR_LABEL_PERFORMER %></td>
+    <td colspan="2"><%= Const::STR_LABEL_REPORT %></td>
+  </tr>
+  <tr>
+    <td>
+      <% if mode == Const::STR_VALUE_SELECT_PERFORMER %>
+         <%= f.collection_select :performer_id, @performers, :id, :name %>
+      <% else %>
+         <strong>
+         <%= f.object.performer ? f.object.performer.name : "-" %>
+         </strong>
+      <% end %>
+    </td>
+    <td colspan="2">
+      <% if mode == Const::STR_VALUE_REPORTING %>
+        <%= f.text_area :report %>
+      <% else %>
+        <strong><%= format_if_empty(f.object.report) %></strong>
+      <% end %>
+    </td>
+  </tr>
+
+  <tr>
+    <td><%= Const::STR_LABEL_INSPECTOR %></td>
+    <td colspan="2"></td>
+  </tr>
+  <tr>
+    <td>
+      <strong>
+      <%= f.object.inspector ? f.object.inspector.name : "-" %>
+      </strong>
+    </td>
+    <td colspan="2">
+      <strong><%= format_if_empty(f.object.remark) %></strong>
+    </td>
+  </tr>
+</table>
+

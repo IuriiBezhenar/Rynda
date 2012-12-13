@@ -1,0 +1,15 @@
+<%= form_for(@service_request) do |f| %>
+
+  <%= render Const::STR_URL_FORM_HEADER, :f => f,
+             :heading => "#{Const::STR_LABEL_SERVICE_REQUEST} ##{f.object.id}" %>
+
+  <%= render Const::STR_URL_FIELDS, :f => f %>
+
+  <div align="center">
+     <%= render Const::STR_URL_PRIV_ACTIONS,
+                :params => { :service_request => f.object } %>
+  </div>
+
+<% end %>
+<br />
+<%= render Const::STR_URL_SERVICE_OPERATIONS_ROOT + Const::STR_URL_OPERATIONS_ON_REQUEST %>

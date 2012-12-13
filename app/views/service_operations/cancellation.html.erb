@@ -1,0 +1,11 @@
+<%= form_for @service_operation, :url => { :action => :make_canceled } do |f| %>
+  <% hd = "#{Const::STR_LABEL_SERVICE_OPERATION} ##{f.object.id} - #{Const::STR_LABEL_CANCELLATION}" %>
+  <%= render Const::STR_URL_FORM_HEADER, :f => f, :heading => hd %>
+
+  <%= render Const::STR_URL_FIELDS, :f => f,
+                                    :mode => Const::STR_VALUE_REPORTING %>
+
+  <%= render Const::STR_URL_FORM_SUBMIT, :f => f,
+             :caption => Const::STR_ACTION_SAVE_CHANGES %>
+
+<% end %>

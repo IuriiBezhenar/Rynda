@@ -1,0 +1,20 @@
+<%= render Const::STR_URL_ERROR_MESSAGES, :object => f.object %>
+
+<% cmp = @business_unit.company ? @business_unit.company : @company %>
+
+<%= hidden_field_tag :company_id, cmp.id %>
+<h4><%= Const::STR_LABEL_COMPANY + " #{cmp.name}" %></h4>
+
+<div class="field">
+  <%= f.label Const::STR_LABEL_NAME %><br />
+  <%= f.text_field :name %>
+</div>
+<div class="field">
+  <%= f.label Const::STR_LABEL_DESCRIPTION %><br />
+  <%= f.text_field :descr %>
+</div>
+<div class="field">
+  <%= f.label Const::STR_LABEL_STATUS %><br />
+  <%= f.collection_select :status_id, Systype.contact_status_list,
+        :id, :name %>
+</div>

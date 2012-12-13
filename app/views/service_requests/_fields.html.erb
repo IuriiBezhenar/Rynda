@@ -1,0 +1,74 @@
+<% mode ||= "-" %>
+<table class="details" summary="Service request info">
+  <tr>
+    <td><%= Const::STR_LABEL_CREATED_AT %></td>
+    <td><%= Const::STR_LABEL_REQUESTER %></td>
+    <td><%= Const::STR_LABEL_LOCATION_INFO %></td>
+  </tr>
+  <tr>
+    <td>
+      <strong><%= format_local_ts(f.object.created_at) %></strong>
+    </td>
+    <td>
+      <strong><%= f.object.requester.name %></strong>
+    </td>
+    <td>
+      <strong><%= f.object.location_info %></strong>
+    </td>
+  </tr>
+
+  <tr>
+    <td><%= Const::STR_LABEL_SERV_REQ_TYPE %></td>
+    <td><%= Const::STR_LABEL_STATUS %></td>
+    <td><%= Const::STR_LABEL_STATUS_DATE %></td>
+  </tr>
+  <tr>
+    <td>
+      <strong><%= f.object.type.name %></strong>
+    </td>
+    <td>
+      <strong><%= f.object.status.name %></strong>
+    </td>
+    <td>
+      <strong><%= format_local_ts(f.object.status_date) %></strong>
+    </td>
+  </tr>
+
+  <tr>
+    <td><%= Const::STR_LABEL_HARDWARE_TYPE %></td>
+    <td><%= Const::STR_LABEL_HARDWARE_INFO %></td>
+    <td>
+      <% if mode == Const::STR_VALUE_SELECT_COMMUNITY %>
+        <%= Const::STR_LABEL_PERFORMING_COMMUNITY %>
+      <% end %>
+      <% if mode == Const::STR_VALUE_CALLBACK %>
+        <%= Const::STR_LABEL_CALLBACK_INFO %>
+      <% end %>
+     </td>
+  </tr>
+  <tr>
+    <td>
+      <strong>
+      <%= (f.object.hardware_type && f.object.hardware_type.name) || "-" %>
+      </strong>
+    </td>
+    <td>
+      <strong><%= f.object.hardware_info %></strong>
+    </td>
+    <td>
+      <% if mode == Const::STR_VALUE_SELECT_COMMUNITY %>
+        <%= collection_select(nil, :prfm_community_id, @communities, :id, :name) %>
+      <% end %>
+      <% if mode == Const::STR_VALUE_CALLBACK %>
+        <%= text_area_tag :callback_info %>
+      <% end %>
+    </td>
+  </tr>
+
+  <tr>
+    <td colspan="3"><%= Const::STR_LABEL_ADDITIONAL_INFO %></td>
+  </tr>
+  <tr>
+    <td colspan="3"><strong><%= f.object.descr %></strong></td>
+  </tr>
+</table>

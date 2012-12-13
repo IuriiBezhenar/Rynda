@@ -1,0 +1,7 @@
+<h1><%= Const::STR_MSG_NEW_USER_REGISTRATION %></h1>
+
+<%= form_for(@user) do |f| %>
+  <%= render Const::STR_URL_FIELDS, :f => f %>
+  <%= render Const::STR_URL_FORM_SUBMIT, :f => f,
+             :caption => Const::STR_ACTION_SIGN_UP %>
+<% end %>

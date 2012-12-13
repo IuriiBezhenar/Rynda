@@ -1,0 +1,16 @@
+<h3 align="center">
+   <%= "#{Const::STR_LABEL_SERVICE_OPERATION} ##{@service_operation.id}" -%>
+   <small><%= Const::STR_LABEL_STATUS_TRACK %></small>
+</h3>
+<table>
+  <th><strong><%= Const::STR_LABEL_CREATED_AT %></strong></th>
+  <th><strong><%= Const::STR_LABEL_STATUS %></strong></th>
+  <th><strong><%= Const::STR_LABEL_MODERATOR %></strong></th>
+  <% @service_operation.status_track.each do |track| %>
+    <tr>
+      <td><%= format_local_ts(track.created_at) %></td>
+      <td><%= track.status.name %></td>
+      <td><%= "##{track.moderator.id} #{track.moderator.name}" %></td>
+    </tr>
+  <% end %>
+</table>

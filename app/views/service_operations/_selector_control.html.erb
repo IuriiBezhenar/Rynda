@@ -1,0 +1,38 @@
+<%= form_for(@selector, :url => { :action => :show_list }, :remote => true) do |f| %>
+  <table>
+    <tr>
+      <td>
+        <%= f.check_box Const::STR_FIELD_NAME_PROCESSABLE %>
+        <%=  Const::STR_LABEL_PROCESSABLE %>
+      </td>
+      <td>
+        <%= f.check_box Const::STR_FIELD_NAME_ARCHIVE %>
+        <%= Const::STR_LABEL_ARCHIVE %>
+      </td>
+      <td>
+        <%= f.check_box Const::STR_FIELD_NAME_OWNED_ONLY %>
+        <%= Const::STR_LABEL_OWNED_ONLY %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= Const::STR_LABEL_DATE_FROM %>
+        <%= f.datepicker Const::STR_FIELD_NAME_DATE_FROM,
+              :value => f.object.date_from ?
+                        f.object.date_from.strftime(Const::STR_VALUE_DEFAULT_RAILS_DATE_FORMAT) : nil,
+              :dateFormat => Const::STR_VALUE_DEFAULT_JS_DATE_FORMAT %>
+      </td>
+      <td>
+        <%= Const::STR_LABEL_DATE_TO %>
+        <%= f.datepicker Const::STR_FIELD_NAME_DATE_TO,
+              :value => f.object.date_to ?
+                        f.object.date_to.strftime(Const::STR_VALUE_DEFAULT_RAILS_DATE_FORMAT) : nil,
+              :dateFormat => Const::STR_VALUE_DEFAULT_JS_DATE_FORMAT %>
+      </td>
+      <td>
+        <%= render Const::STR_URL_FORM_SUBMIT, :f => f,
+              :caption => Const::STR_ACTION_RELOAD_DATA %>
+      </td>
+    </tr>
+  </table>
+<% end %>

@@ -1,0 +1,25 @@
+<% if signed_in? %>
+  <table class="front" summary="For registered users">
+    <tr>
+      <td>
+        <ul>
+          <% if privilege_granted?(Const::STR_CLASS_SERVICE_REQUESTS_CONTR, Const::STR_PA_INDEX) %>
+            <li><%= link_to Const::STR_ACTION_SERV_REQ_LIST, service_requests_path %></li>
+          <% end %>
+          <% if privilege_granted?(Const::STR_CLASS_SERVICE_OPERATIONS_CONTR, Const::STR_PA_INDEX) %>
+            <li><%= link_to Const::STR_ACTION_SERV_OPER_LIST, service_operations_path %></li>
+          <% end %>
+        </ul>
+      </td>
+      <td class="sidebar round">
+        <%= render Const::STR_URL_USER_INFO %>
+        <%= render Const::STR_URL_USER_STATS %>
+      </td>
+    </tr>
+  </table>
+<% else %>
+  <h1 align="center"><%= Const::STR_MSG_APPLICATION_NAME %></h1>
+  <p><%= Const::STR_MSG_APPLICATION_INFO %></p>
+  <%= link_to Const::STR_ACTION_SIGN_UP, signup_path,
+              :class => "signup_button round" %>
+<% end %>

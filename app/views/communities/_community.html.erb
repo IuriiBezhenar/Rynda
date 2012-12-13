@@ -1,0 +1,6 @@
+<tr>
+  <td><%= link_to community.name, community, :target => "_blank" %></td>
+  <td><%= community.descr %></td>
+  <td><%= community.company.name %></td>
+  <%= render Const::STR_URL_PRIV_ACTIONS, :params => { :community => community } %>
+</tr>

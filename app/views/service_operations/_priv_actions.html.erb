@@ -1,0 +1,52 @@
+<td>
+  <% sop = params[:service_operation] %>
+  <% if privilege_granted?(@protected_class, Const::STR_PA_UPDATE) %>
+      <% if sop.editable? %>
+        <%= link_to Const::STR_ACTION_EDIT,
+                    edit_service_operation_path(sop) %>
+      <% end %>
+  <% end %>
+  <% if privilege_granted?(@protected_class, Const::STR_PA_DESTROY) && sop.destroyable? %>
+      <%= link_to Const::STR_ACTION_DELETE, sop,
+                  :method  => :delete,
+                  :confirm => Const::STR_MSG_SERV_OPER_DELETION_CONFIRM + " # #{sop.id}",
+                  :title   => Const::STR_MSG_MAKE_DELETION + " #{sop.id}" %>
+  <% end %>
+  <% if privilege_granted?(@protected_class, Const::STR_PA_MAKE_PLANNED) %>
+      <% if sop.can_be_planned? %>
+         <%= link_to Const::STR_ACTION_PLAN_SERV_OPER,
+               make_planned_service_operation_path(sop),
+               :method  => :put,
+               :confirm => Const::STR_MSG_SERV_OPER_PLANNING_CONFIRM + " # #{sop.id}",
+               :title   => Const::STR_MSG_MAKE_PLANNING + " #{sop.id}" %>
+      <% end %>
+  <% end %>
+  <% if privilege_granted?(@protected_class, Const::STR_PA_MAKE_ASSIGNED) %>
+      <% if sop.can_be_assigned? %>
+         <%= link_to Const::STR_ACTION_ASSIGN_SERV_OPER,
+                     select_performer_service_operation_path(sop) %>
+      <% end %>
+  <% end %>
+  <% if privilege_granted?(@protected_class, Const::STR_PA_MAKE_ACTIVATED) %>
+      <% if sop.can_be_activated? %>
+         <%= link_to Const::STR_ACTION_ACTIVATE_SERV_OPER,
+                     activation_service_operation_path(sop) %>
+      <% end %>
+  <% end %>
+  <% if privilege_granted?(@protected_class, Const::STR_PA_MAKE_COMMITTED) %>
+      <% if sop.can_be_committed? %>
+         <%= link_to Const::STR_ACTION_COMMIT_SERV_OPER,
+                     committing_service_operation_path(sop) %>
+      <% end %>
+  <% end %>
+  <% if privilege_granted?(@protected_class, Const::STR_PA_MAKE_CANCELED) %>
+      <% if sop.can_be_canceled? %>
+         <%= link_to Const::STR_ACTION_CANCEL_SERV_OPER,
+                     cancellation_service_operation_path(sop) %>
+      <% end %>
+  <% end %>
+  <% if privilege_granted?(@protected_class, Const::STR_PA_SHOW_STATUS_TRACK) %>
+      <%= link_to Const::STR_ACTION_SHOW_STATUS_TRACK,
+                  show_status_track_service_operation_path(sop) %>
+  <% end %>
+</td>

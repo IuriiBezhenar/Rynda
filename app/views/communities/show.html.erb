@@ -1,0 +1,19 @@
+<table class="profile">
+  <tr>
+    <td class="main">
+      <h1>
+        <%= @community.name %>
+      </h1>
+    </td>
+    <td class="sidebar round">
+      <strong><%= Const::STR_LABEL_DESCRIPTION %></strong> <br />
+      <%= @community.descr %> <br />
+    </td>
+  </tr>
+  <tr>
+     <%= render Const::STR_URL_PRIV_ACTIONS, :params => { :community => @community } %>
+  </tr>
+
+</table>
+
+<%#= render Const::STR_URL_COMMUNITY_USER_LIST %>

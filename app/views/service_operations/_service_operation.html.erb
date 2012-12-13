@@ -1,0 +1,19 @@
+<tr>
+  <td><%= link_to "# #{service_operation.id}", service_operation, :target => "_blank" %></td>
+  <td><%= service_operation.type.name %></td>
+  <td><%= service_operation.status.name %></td>
+  <td><%= format_local_ts(service_operation.status_date) %></td>
+  <td>
+    <% if service_operation.service_request %>
+       <%#= link_to service_operation.service_request.request_info,
+            service_operation.service_request %>
+       <%= service_operation.service_request.request_info %>
+    <% else %>
+         -
+    <% end %>
+  </td>
+  <td><%= service_operation.performer ? service_operation.performer.name : "-" %></td>
+  <td><%= service_operation.descr %></td>
+  <%= render Const::STR_URL_SERVICE_OPERATIONS_ROOT + Const::STR_URL_PRIV_ACTIONS,
+             :params => { :service_operation => service_operation } %>
+</tr>

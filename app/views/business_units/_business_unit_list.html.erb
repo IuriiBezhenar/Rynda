@@ -1,0 +1,11 @@
+<% if @company.business_unit_list.count > 0 %>
+  <br />
+  <table class="details">
+    <tr>
+      <th><%= Const::STR_LABEL_NAME %></th>
+      <th><%= Const::STR_LABEL_DESCRIPTION %></th>
+      <th><%= Const::STR_LABEL_ACTIONS %></th>
+    </tr>
+    <%= render @company.business_unit_list %>
+  </table>
+<% end %>

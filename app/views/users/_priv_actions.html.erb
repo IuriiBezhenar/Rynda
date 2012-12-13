@@ -1,0 +1,18 @@
+<td>
+  <% usr = params[:user] %>
+  
+  <% if current_user?(usr) %>
+    <%= link_to Const::STR_ACTION_USER_PROFILE, edit_user_path(usr) %>
+  <% end %>
+
+  <% if privilege_granted?(@protected_class, Const::STR_PA_PROCESS_ROLES) %>
+      <%= link_to Const::STR_ACTION_MANAGE_ROLES, manage_roles_user_path(usr) %>
+  <% end %>
+
+  <% if privilege_granted?(@protected_class, Const::STR_PA_DESTROY) && usr.destroyable? %>
+      <%= link_to Const::STR_ACTION_DELETE, usr,
+            :method  => :delete,
+            :confirm => Const::STR_MSG_USER_DELETION_CONFIRM + " #{usr.name}",
+            :title   => Const::STR_MSG_MAKE_DELETION + " #{usr.name}" %>
+  <% end %>
+</td>

@@ -1,0 +1,21 @@
+<h3><%= Const::STR_MSG_USER_LIST %></h3>
+
+<table>
+  <tr>
+    <th><%= Const::STR_LABEL_LOGIN %></th>
+    <th><%= Const::STR_LABEL_USER_NAME %></th>
+    <th><%= Const::STR_LABEL_EMAIL %></th>
+    <th><%= Const::STR_LABEL_STATUS %></th>
+  </tr>
+
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.login %></td>
+      <td><%= user.name %></td>
+      <td><%= user.email %></td>
+      <td><%= user.status.name %></td>
+    </tr>
+  <% end %>
+</table>
+
+<br />

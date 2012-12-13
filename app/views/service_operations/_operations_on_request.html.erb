@@ -1,0 +1,8 @@
+<% if @service_request.service_operations.count > 0 %>
+  <hr />
+  <h3 align="center"><%= Const::STR_MSG_OPERATIONS_ON_REQUEST %></h3>
+  <table class="details">
+    <%= render Const::STR_URL_SERVICE_OPERATIONS_ROOT + Const::STR_URL_LIST_HEADER %>
+    <%= render @service_request.service_operations %>
+  </table>
+<% end %>

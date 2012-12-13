@@ -1,0 +1,13 @@
+<table>
+  <tr>
+    <th><strong>Model name</strong></th>
+    <th><strong>Action key</strong></th>
+  </tr>
+  <% @user.privileges_at_company(0).each do |p| %>
+  <%# session[:privileges].each do |p| %>
+    <tr>
+      <td><%= p[0] %></td>
+      <td><%= p[1] %></td>
+    </tr>
+  <% end %>
+</table>

@@ -1,0 +1,27 @@
+<td>
+  <% cmp = params[:company] %>
+  <% if privilege_granted?(@protected_class, Const::STR_PA_UPDATE) %>
+      <%= link_to Const::STR_ACTION_EDIT, edit_company_path(cmp) %>
+  <% end %>
+  <% if privilege_granted?(@protected_class, Const::STR_PA_DESTROY) && cmp.destroyable?%>
+      <%= link_to Const::STR_ACTION_DELETE, cmp,
+            :method  => :delete,
+            :confirm => Const::STR_MSG_COMPANY_DELETION_CONFIRM + " #{cmp.name}",
+            :title   => Const::STR_MSG_MAKE_DELETION + " #{cmp.name}" %>
+  <% end %>
+  <% if privilege_granted?(Const::MODEL_CLASS_NAME_COMMUNITY, Const::STR_PA_INDEX) %>
+      <%= link_to Const::STR_ACTION_COMMUNITY_LIST,
+                  :controller => :communities, :action => :index,
+                  :company_id => cmp %>
+  <% end %>
+
+  <%-# Depended on active status of the company and input params value %>
+  <%# if (cmp.status_id == Const::ID_CONTACT_STATUS_ACTIVE) %>
+      <%# if params[:new_business_unit] &&
+            privilege_granted?(Const::MODEL_ClASS_NAME_COMPANY, Const::STR_PRIV_LIST)
+            current_user.has_privileges?(cmp, 'new_business_unit')%>
+         <%#= link_to Const::STR_ACTION_NEW_BUSINESS_UNIT,
+              new_business_unit_path(:company_id => cmp, :company_name => cmp.name) %>
+      <%# end %>
+  <%# end %>
+</td>

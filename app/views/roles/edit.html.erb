@@ -1,0 +1,7 @@
+<h1><%= Const::STR_MSG_EDIT_ROLE %></h1>
+
+<%= form_for(@role) do |f| %>
+  <%= render Const::STR_URL_FIELDS, :f => f %>
+  <%= render Const::STR_URL_FORM_SUBMIT, :f => f,
+             :caption => Const::STR_MSG_SAVE_CHANGES %>
+<% end %>

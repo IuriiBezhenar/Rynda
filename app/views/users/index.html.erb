@@ -1,0 +1,21 @@
+<h1 align="center">
+  <%= Const::STR_MSG_USER_LIST %>
+  <%= link_to export_xls, url_for(:format => 'xls') %>
+</h1>
+
+<% if User.count > 0 %>
+  <%= will_paginate %>
+  <ul class="shared_list">
+    <table class="details">
+      <tr>
+        <th><%= Const::STR_LABEL_LOGIN %></th>
+        <th><%= Const::STR_LABEL_USER_NAME %></th>
+        <th><%= Const::STR_LABEL_EMAIL %></th>
+        <th><%= Const::STR_LABEL_STATUS %></th>
+        <th><%= Const::STR_LABEL_ACTIONS %></th>
+      </tr>
+      <%= render @users %>
+    </table>
+  </ul>
+  <%= will_paginate %>
+<% end %>

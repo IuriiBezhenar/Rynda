@@ -1,0 +1,6 @@
+<tr>
+  <td><%= link_to company.name, company, :target => "_blank" %></td>
+  <td><%= company.status.name %></td>
+  <td><%= company.descr %></td>
+  <%= render Const::STR_URL_PRIV_ACTIONS, :params => { :company => company } %>
+</tr>

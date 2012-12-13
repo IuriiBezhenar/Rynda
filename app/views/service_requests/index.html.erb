@@ -1,0 +1,12 @@
+<h3 align="center"><%= Const::STR_LABEL_SERV_REQ_QUEUE %></h3>
+
+<%= render Const::STR_URL_SELECTOR_CONTROL %>
+
+<div id="selected_list">
+  <%= render Const::STR_URL_SELECTED_LIST %>
+</div>
+
+<% if privilege_granted?(@protected_class, Const::STR_PA_CREATE) %>
+  <%= link_to Const::STR_ACTION_CREATE_SERV_REQ,
+        new_service_request_path, :class => "new_item_button round" %>
+<% end %>

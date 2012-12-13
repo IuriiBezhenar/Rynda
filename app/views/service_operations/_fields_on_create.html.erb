@@ -1,0 +1,42 @@
+<table>
+  <tr>
+    <td><%= f.label Const::STR_LABEL_SERV_OPER_TYPE %></td>
+    <td><%= f.label Const::STR_LABEL_OPERABLE_REQUEST %></td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">
+         <%= f.collection_select :type_id, Systype.service_operation_type_list,
+                                 :id, :name %>
+      </div>
+    </td>
+    <td>
+      <div class="field">
+         <%= f.collection_select :service_request_id,
+                                 ServiceRequest.operable_list(current_company),
+                                 :id, :request_info,
+                                 {:include_blank => Const::STR_MSG_INDEPENDENT_OPERATION} %>
+       </div>
+    </td>
+  </tr>
+  <tr>
+    <td><%= f.label Const::STR_LABEL_PERFORMING_COMMUNITY %></td>
+    <td><%= f.label Const::STR_LABEL_ADDITIONAL_INFO %></td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">
+         <%= f.collection_select :prfm_community_id, @communities,
+                                 :id, :name,
+                                 {:include_blank => Const::STR_MSG_BLANK_COMMUNITY}%>
+      </div>
+    </td>
+    <td>
+      <div class="field">
+         <%= f.text_area :descr,
+                         :value => f.object.descr && (f.object.descr.length > 0) ?
+                                   f.object.descr : Const::STR_MSG_SOME_TEXT_NEEDED %>
+      </div>
+    </td>
+  </tr>
+</table>

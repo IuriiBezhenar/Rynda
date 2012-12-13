@@ -1,0 +1,25 @@
+<header>
+  <%= link_to logo, root_path %>
+  <nav class="round">
+    <ul>
+      <li><%= link_to Const::STR_ACTION_MAIN_PAGE, root_path   %></li>
+      <% if signed_in? %>
+        <% if privilege_granted?(Const::STR_CLASS_USERS_CONTR, Const::STR_PA_INDEX) %>
+          <li><%= link_to Const::STR_ACTION_USER_LIST, users_path %></li>
+        <% end %>
+        <% if privilege_granted?(Const::STR_CLASS_ROLES_CONTR, Const::STR_PA_INDEX) %>
+          <li><%= link_to Const::STR_ACTION_ROLE_LIST, roles_path %></li>
+        <% end %>
+        <% if privilege_granted?(Const::STR_CLASS_COMPANIES_CONTR, Const::STR_PA_INDEX) %>
+          <li><%= link_to Const::STR_ACTION_COMPANY_LIST, companies_path %></li>
+        <% end %>
+      <% end %>
+      <li><%= link_to Const::STR_ACTION_HELP, help_path %></li>
+      <% if signed_in? %>
+        <li><%= link_to Const::STR_ACTION_SIGN_OUT, signout_path, :method => :delete %></li>
+      <% else %>
+        <li><%= link_to Const::STR_ACTION_SIGN_IN, signin_path %></li>
+      <% end %>
+    </ul>
+  </nav>
+</header>

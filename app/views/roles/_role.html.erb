@@ -1,0 +1,5 @@
+<tr>
+  <td><%= link_to role.name, role, :target => "_blank" %></td>
+  <td><%= role.descr %></td>
+  <%= render Const::STR_URL_PRIV_ACTIONS, :params => { :role => role } %>
+</tr>

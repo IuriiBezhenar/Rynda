@@ -1,0 +1,10 @@
+<div class="user_info">
+  <strong><%= Const::STR_LABEL_MY_PROFILE %></strong><br />
+  <%= link_to current_user.name, user_path(current_user) %><hr />
+  <strong><%= Const::STR_LABEL_CURRENT_COMPANY %></strong><br />
+  <% if current_company %>
+    <%= link_to current_company.name, switch_current_company_path(current_company) %>
+  <% else %>
+    <%= Const::STR_MSG_CURRENT_COMPANY_MISSING %>
+  <% end %>
+</div>

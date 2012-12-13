@@ -1,0 +1,15 @@
+<td>
+  <% r = params[:role] %>
+  <% if privilege_granted?(@protected_class, Const::STR_PA_UPDATE) %>
+      <%= link_to Const::STR_ACTION_EDIT, edit_role_path(r) %>
+  <% end %>
+  <% if privilege_granted?(@protected_class, Const::STR_PA_PROCESS_PRIVILEGES) %>
+      <%= link_to Const::STR_ACTION_MANAGE_PRIVILEGES, manage_privileges_role_path(r) %>
+  <% end %>
+  <% if privilege_granted?(@protected_class, Const::STR_PA_DESTROY) && r.destroyable? %>
+      <%= link_to Const::STR_ACTION_DELETE, r,
+            :method  => :delete,
+            :confirm => Const::STR_MSG_ROLE_DELETION_CONFIRM + " #{r.name}",
+            :title   => Const::STR_MSG_MAKE_DELETION + " #{r.name}" %>
+  <% end %>
+</td>

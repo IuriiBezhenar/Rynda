@@ -1,0 +1,18 @@
+<table class="profile" summary="Company info">
+  <tr>
+    <td class="main">
+      <h1>
+        <%= @company.name %>
+      </h1>
+    </td>
+    <td class="sidebar round">
+      <strong><%= Const::STR_LABEL_DESCRIPTION %></strong> <br /> <%= @company.descr %> <br />
+      <strong><%= Const::STR_LABEL_STATUS %></strong> <br /> <%= @company.status.name %> <br />
+    </td>
+  </tr>
+  <tr>
+     <%= render Const::STR_URL_PRIV_ACTIONS, :params => { :company => @company } %>
+  </tr>
+</table>
+
+<%= render Const::STR_URL_BUSINESS_UNIT_LIST %>

@@ -1,0 +1,10 @@
+<tr>
+  <td><%= link_to "# #{service_request.id}", service_request, :target => "_blank" %></td>
+  <td><%= service_request.type.name %></td>
+  <td><%= service_request.status.name %></td>
+  <td><%= format_local_ts(service_request.status_date) %></td>
+  <td><%= service_request.requester.name %></td>
+  <td><%= service_request.descr %></td>
+  <%= render Const::STR_URL_PRIV_ACTIONS,
+             :params => { :service_request => service_request } %>
+</tr>

@@ -1,0 +1,47 @@
+<td>
+  <% srq = params[:service_request] %>
+  <% if privilege_granted?(@protected_class, Const::STR_PA_UPDATE) %>
+      <% if srq.editable? %>
+        <%= link_to Const::STR_ACTION_EDIT, edit_service_request_path(srq) %>
+      <% end %>
+  <% end %>
+  <% if privilege_granted?(@protected_class, Const::STR_PA_DESTROY) %>
+      <% if srq.destroyable? %>
+         <%= link_to Const::STR_ACTION_DELETE, srq,
+               :method  => :delete,
+               :confirm => Const::STR_MSG_SERV_REQ_DELETION_CONFIRM + " # #{srq.id}",
+               :title   => Const::STR_MSG_MAKE_DELETION + " #{srq.id}" %>
+      <% end %>
+  <% end %>
+  <% if privilege_granted?(@protected_class, Const::STR_PA_MAKE_SENT) %>
+      <% if srq.can_be_sent? %>
+         <%= link_to Const::STR_ACTION_SEND_SERV_REQ,
+               make_sent_service_request_path(srq),
+               :method  => :put,
+               :confirm => Const::STR_MSG_SERV_REQ_SENDING_CONFIRM + " # #{srq.id}",
+               :title   => Const::STR_MSG_MAKE_SENDING + " #{srq.id}" %>
+      <% end %>
+  <% end %>
+  <% if privilege_granted?(@protected_class, Const::STR_PA_MAKE_RECEIVED) %>
+      <% if srq.can_be_received? %>
+         <%= link_to Const::STR_ACTION_RECEIVE_SERV_REQ,
+                     select_prfm_community_service_request_path(srq) %>
+      <% end %>
+  <% end %>
+  <% if privilege_granted?(@protected_class, Const::STR_PA_MAKE_APPROVED) %>
+      <% if srq.can_be_approved? %>
+         <%= link_to Const::STR_ACTION_APPROVE_SERV_REQ,
+                     approving_service_request_path(srq) %>
+      <% end %>
+  <% end %>
+  <% if privilege_granted?(@protected_class, Const::STR_PA_MAKE_RETURNED) %>
+      <% if srq.can_be_returned? %>
+         <%= link_to Const::STR_ACTION_RETURN_SERV_REQ,
+                     returning_service_request_path(srq) %>
+      <% end %>
+  <% end %>
+  <% if privilege_granted?(@protected_class, Const::STR_PA_SHOW_STATUS_TRACK) %>
+      <%= link_to Const::STR_ACTION_SHOW_STATUS_TRACK,
+                  show_status_track_service_request_path(srq) %>
+  <% end %>
+</td>

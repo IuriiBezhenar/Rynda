@@ -1,0 +1,46 @@
+<table>
+  <tr>
+    <td><%= f.label Const::STR_LABEL_SERV_REQ_TYPE %></td>
+    <td><%= f.label Const::STR_LABEL_LOCATION_INFO %></td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">
+         <%= f.collection_select :type_id, Systype.service_request_type_list,
+                                 :id, :name %>
+      </div>
+    </td>
+    <td>
+      <div class="field">
+         <%= f.text_field :location_info %>
+       </div>
+    </td>
+  </tr>
+  <tr>
+    <td><%= f.label Const::STR_LABEL_HARDWARE_TYPE %></td>
+    <td><%= f.label Const::STR_LABEL_HARDWARE_INFO %></td>
+  </tr>
+  <tr>
+    <td>
+      <div class="field">
+         <%= f.collection_select :hardware_type_id, Systype.hardware_type_list,
+                                 :id, :name %>
+      </div>
+    </td>
+    <td>
+      <div class="field">
+         <%= f.text_field :hardware_info %>
+       </div>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"><%= f.label Const::STR_LABEL_ADDITIONAL_INFO %></td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <div class="field">
+         <%= f.text_area :descr %>
+      </div>
+    </td>
+  </tr>
+</table>

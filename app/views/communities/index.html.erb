@@ -1,0 +1,32 @@
+<h3 align="center">
+  <%= Const::STR_MSG_COMMUNITY_LIST %>
+  <%#= link_to export_xls, url_for(:format => 'xls') %>
+</h3>
+
+<% if @communities.count > 0 %>
+  <%= will_paginate %>
+  <ul class="shared_list">
+    <table class="details">
+      <tr>
+        <th><%= Const::STR_LABEL_NAME %></th>
+        <th><%= Const::STR_LABEL_DESCRIPTION %></th>
+        <th><%= Const::STR_LABEL_COMPANY %></th>
+        <th><%= Const::STR_LABEL_ACTIONS %></th>
+      </tr>
+      <%= render @communities %>
+    </table>
+  </ul>
+  <%= will_paginate %>
+<% else %>
+  <br />
+  <div align="center">
+    <strong><%= Const::STR_MSG_EMPTY_COMMUNITY_LIST %></strong>
+  </div>
+  <br />
+<% end %>
+
+<% if privilege_granted?(@protected_class, Const::STR_PA_CREATE) %>
+  <%= link_to Const::STR_ACTION_CREATE_COMMUNITY,
+              new_community_path(:company_id => @company),
+              :class => "new_item_button round" %>
+<% end %>

@@ -1,0 +1,15 @@
+<td>
+  <% cmn = params[:community] %>
+  <% if privilege_granted?(@protected_class, Const::STR_PA_UPDATE) %>
+      <%= link_to Const::STR_ACTION_EDIT, edit_community_path(cmn) %>
+  <% end %>
+  <% if privilege_granted?(@protected_class, Const::STR_PA_PROCESS_MEMBERS) %>
+      <%= link_to Const::STR_ACTION_MANAGE_MEMBERS, manage_members_community_path(cmn) %>
+  <% end %>
+  <% if privilege_granted?(@protected_class, Const::STR_PA_DESTROY) && cmn.destroyable? %>
+      <%= link_to Const::STR_ACTION_DELETE, cmn,
+            :method  => :delete,
+            :confirm => Const::STR_MSG_COMMUNITY_DELETION_CONFIRM + " #{cmn.name}",
+            :title   => Const::STR_MSG_MAKE_DELETION + " #{cmn.name}" %>
+  <% end %>
+</td>

@@ -1,0 +1,48 @@
+<h2>
+  <small><%= Const::STR_MSG_PRIVILEGE_MANAGEMENT %>: </small>
+  <%= link_to @role.name, @role %>
+</h2>
+
+<%= form_for @role, :url => { :action => :process_privileges } do |f| %>
+  <% Const::HASH_MODEL_PRIVILEGED_ACTIONS.each do |e| %>
+    <% class_name = e[0] %>
+    <hr />
+    <table>
+      <tr>
+        <th width="25%"><%= e[1][Const::STR_VALUE_ALIAS] %></th>
+        <th width="55%"><%= Const::STR_LABEL_PRIVILEGED_ACTION %></th>
+        <th width="10%"><%= Const::STR_LABEL_PRIVILEGES %></th>
+        <th width="5%" ><%= Const::STR_LABEL_GRANT %></th>
+        <th width="5%" ><%= Const::STR_LABEL_REVOKE %></th>
+      </tr>
+      <% e[1][Const::STR_VALUE_ACTIONS].each do |a| %>
+        <% action_name = a[0] %>
+        <tr>
+          <td></td>
+          <% if @privileges.select{|p| (p.class_name == class_name) && (p.action_name == action_name)}.count > 0 %>
+            <td><strong><%= a[1] %></strong></td>
+            <td><%= image_checked %></td>
+            <td></td>
+            <td><%= check_box_tag "revoked[]", "#{class_name}.#{action_name}" %></td>
+          <% else %>
+            <td><%= a[1] %></td>
+            <td></td>
+            <td><%= check_box_tag "granted[]", "#{class_name}.#{action_name}" %></td>
+            <td></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </table>
+  <% end %>
+
+  <%= render Const::STR_URL_FORM_SUBMIT, :f => f,
+             :caption => Const::STR_MSG_SAVE_CHANGES %>
+<% end %>
+
+  <%# Const::HASH_MODEL_PRIVILEGED_ACTIONS.each do |e| %>
+    <%#= e[0] %><%#= e[1][Const::STR_VALUE_ALIAS] %>
+    <%# e[1][Const::STR_VALUE_ACTIONS].each do |a| %>
+      <%#= a[0] %><%#= a[1] %>
+    <%# end %>
+  <%# end %>
+

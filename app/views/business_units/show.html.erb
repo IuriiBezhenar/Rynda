@@ -1,0 +1,25 @@
+<table class="profile" summary="Business unit info">
+  <tr>
+    <td class="main">
+      <h1>
+        <%= @business_unit.name %>
+      </h1>
+    </td>
+    <td class="sidebar round">
+      <strong><%= Const::STR_LABEL_DESCRIPTION %></strong> <br /> <%= @business_unit.descr %> <br />
+      <strong><%= Const::STR_LABEL_STATUS %></strong> <br /> <%= @business_unit.status.name %> <br />
+    </td>
+  </tr>
+  <tr>
+     <%#= render 'admin_actions',
+          :params => { :enterprise             => @enterprise,
+                       :add_employee_action    => true,
+                       :add_team_action        => true,
+                       :manage_products_action => true,
+                       :manage_contacts_action => true,
+                       :manage_outlets_action  => true } %>
+  </tr>
+
+</table>
+
+<%#= render Const::STR_URL_BUSINESS_UNIT_LIST %>

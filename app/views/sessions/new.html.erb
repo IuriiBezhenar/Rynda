@@ -1,0 +1,17 @@
+<h1><%= Const::STR_MSG_USER_SIGN_IN %></h1>
+
+<%= form_for(:session, :url => sessions_path) do |f| %>
+  <div class="field">
+    <%= f.label :login, Const::STR_LABEL_LOGIN %><br />
+    <%= f.text_field :login %>
+  </div>
+  <div class="field">
+    <%= f.label Const::STR_LABEL_PASSWORD %><br />
+    <%= f.password_field :password %>
+  </div>
+  <%= render Const::STR_URL_FORM_SUBMIT, :f => f,
+             :caption => Const::STR_ACTION_SIGN_IN %>
+<% end %>
+
+<br /><p><%= Const::STR_MSG_FIRST_TIME_AT_SITE %>
+<%= link_to Const::STR_MSG_SIGN_UP_NOW, signup_path %></p>

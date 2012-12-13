@@ -1,0 +1,25 @@
+<table class="profile" summary="Profile information">
+  <tr>
+    <td class="main">
+      <h1>
+        <%#= gravatar_for @user  %>
+        <%= @user.name %>
+      </h1>
+    </td>
+    <td class="sidebar round">
+      <strong><%= Const::STR_LABEL_LOGIN %></strong> <br />
+      <%= @user.login %> <br />
+      <strong><%= Const::STR_LABEL_EMAIL %></strong> <br />
+      <%= @user.email %> <br />
+      <strong><%= Const::STR_LABEL_STATUS %></strong> <br />
+      <%= @user.status.name %> <br />
+      <%= render Const::STR_URL_USER_STATS %>
+    </td>
+  </tr>
+  <tr>
+     <%= render Const::STR_URL_PRIV_ACTIONS, :params => { :user => @user } %>
+  </tr>
+</table>
+
+<hr />
+<%#= render 'privileges' %>

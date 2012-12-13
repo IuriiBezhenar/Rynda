@@ -1,0 +1,7 @@
+<h1><%= Const::STR_MSG_EDIT_COMPANY %></h1>
+
+<%= form_for(@company) do |f| %>
+  <%= render Const::STR_URL_FIELDS, :f => f %>
+  <%= render Const::STR_URL_FORM_SUBMIT, :f => f,
+             :caption => Const::STR_ACTION_SAVE_CHANGES %>
+<% end %>

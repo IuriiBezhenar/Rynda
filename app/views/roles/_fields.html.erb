@@ -1,0 +1,10 @@
+<%= render Const::STR_URL_ERROR_MESSAGES, :object => f.object %>
+
+<div class="field">
+  <%= f.label :name, Const::STR_LABEL_NAME %><br />
+  <%= f.text_field :name %>
+</div>
+<div class="field">
+  <%= f.label :name, Const::STR_LABEL_DESCRIPTION %><br />
+  <%= f.text_area :descr %>
+</div>

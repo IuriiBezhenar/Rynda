@@ -1,0 +1,22 @@
+<%= render Const::STR_URL_ERROR_MESSAGES, :object => f.object %>
+
+<div class="field">
+  <%= f.label :name, Const::STR_LABEL_LOGIN %><br />
+  <%= f.text_field :login %>
+</div>
+<div class="field">
+  <%= f.label :name, Const::STR_LABEL_USER_NAME %><br />
+  <%= f.text_field :name %>
+</div>
+<div class="field">
+  <%= f.label :email, Const::STR_LABEL_EMAIL %><br />
+  <%= f.text_field :email %>
+</div>
+<div class="field">
+  <%= f.label :password, Const::STR_LABEL_PASSWORD %><br />
+  <%= f.password_field :password %>
+</div>
+<div class="field">
+  <%= f.label :password_confirmation, Const::STR_LABEL_PASSWORD_CONFIRMATION %><br />
+  <%= f.password_field :password_confirmation %>
+</div>

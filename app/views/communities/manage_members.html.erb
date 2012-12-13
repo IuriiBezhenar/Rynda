@@ -1,0 +1,41 @@
+<h3>
+  <small><%= Const::STR_MSG_MEMBER_MANAGEMENT %>:</small>
+  <%= link_to @community.name, @community %>
+  <small><%= "(#{@community.company.name})" %></small>
+</h3>
+<hr />
+<%= form_for @community, :url => { :action => :process_members } do |f| %>
+  <table>
+    <tr>
+      <th width="60%"><%= Const::STR_LABEL_USER_NAME %></th>
+      <th width="20%"><%= Const::STR_LABEL_LOGIN %></th>
+      <th width="10%"><%= Const::STR_LABEL_MEMBERSHIP %></th>
+      <th width="5%" ><%= Const::STR_LABEL_INCLUDE %></th>
+      <th width="5%" ><%= Const::STR_LABEL_EXCLUDE %></th>
+    </tr>
+    <% cu = @community.users %>
+    <% cu.each do |u| %>
+      <tr>
+        <td><strong><%= u.name %></strong></td>
+        <td><strong><%= u.login %></strong></td>
+        <td><%= image_checked %></td>
+        <td></td>
+        <td><%= check_box_tag "excluded[]", u.id %></td>
+      </tr>
+    <% end %>
+    <% au = User.active_users %>
+    <% au.each do |u| %>
+      <% if !cu.include?(u) %>
+        <tr>
+          <td><%= u.name %></td>
+          <td><%= u.login %></td>
+          <td></td>
+          <td><%= check_box_tag "included[]", u.id %></td>
+          <td></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </table>
+  <%= render Const::STR_URL_FORM_SUBMIT, :f => f,
+             :caption => Const::STR_MSG_SAVE_CHANGES %>
+<% end %>

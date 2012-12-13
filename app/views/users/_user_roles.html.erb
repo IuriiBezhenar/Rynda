@@ -1,0 +1,14 @@
+    <table class="details">
+      <tr>
+        <th><%= action_label %></th>
+        <th><%= Const::STR_LABEL_NAME %></th>
+        <th><%= Const::STR_LABEL_DESCRIPTION %></th>
+      </tr>
+      <% role_list.each do |r| %>
+        <tr>
+          <td><%= check_box_tag "role_ids[]", r.id %></td>
+          <td><%= r.name %></td>
+          <td><%= r.descr %></td>
+        </tr>
+      <% end %>
+    </table>

@@ -1,0 +1,20 @@
+<% if @wrong_selector %>
+  <%= content_tag(:div, Const::STR_MSG_SET_OF_SELECTORS_IS_WRONG, :class => "flash notice") %>
+<% end %>
+
+<% if @service_requests && (@service_requests.count > 0) %>
+  <%= will_paginate %>
+  <ul class="shared_list">
+    <table class="details">
+       <%= render Const::STR_URL_LIST_HEADER %>
+       <%= render @service_requests %>
+    </table>
+  </ul>
+  <%= will_paginate %>
+<% else %>
+  <%= content_tag(:div,
+                  @service_requests ? Const::STR_MSG_NO_RECORD_FOUND :
+                                      Const::STR_MSG_SET_SELECTORS_AND_RELOAD,
+                  :class => "flash info") %>
+<% end %>
+

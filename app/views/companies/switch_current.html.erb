@@ -1,0 +1,20 @@
+<% if current_company %>
+  <h3><%= Const::STR_MSG_SWITCH_CURRENT_COMPANY %>
+      <strong><%= "(#{current_company.name})" %></strong>
+  </h3>
+
+  <% if @available_companies.count > 0 %>
+    <%= form_for current_company, :url => { :action => :make_current } do |f| %>
+    <%= Const::STR_MSG_SWITCH_TO_COMPANY %>
+    <%= select_tag Const::STR_FIELD_NAME_COMPANY_ID,
+        options_from_collection_for_select(@available_companies,
+                                           Const::STR_FIELD_NAME_ID,
+                                           Const::STR_FIELD_NAME_NAME) %>
+      <br /><br />
+      <%= render Const::STR_URL_FORM_SUBMIT, :f => f,
+                 :caption => Const::STR_ACTION_SAVE_CHANGES %>
+    <% end %>
+  <% end %>
+<% else %>
+  <%= Const::STR_MSG_CURRENT_COMPANY_MISSING %>
+<% end %>
