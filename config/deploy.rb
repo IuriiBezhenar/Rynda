@@ -1,4 +1,5 @@
 #require 'bundler/capistrano'
+require "rvm/capistrano"
 set :application, "Rynda"
 #set :repository,  "ssh://git@github.com/vivakalman/Rynda.git"
 set :repository,  "git@github.com:vivakalman/Rynda.git"
