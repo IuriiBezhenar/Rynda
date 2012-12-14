@@ -1,8 +1,18 @@
+set :rvm_ruby, "ruby-1.9.3-p327"
+set :rvm_gem_home, "#{fetch(:base_dir)}/.rvm/gems/#{fetch(:rvm_ruby)}"
+set :rvm_ruby_path, "#{fetch(:base_dir)}/.rvm/rubies/#{fetch(:rvm_ruby)}"
+set :default_environment, {
+  'RUBY_VERSION' => fetch(:rvm_ruby),
+  'GEM_HOME' => "#{fetch(:rvm_gem_home)}:#{fetch(:rvm_gem_home)}@global",
+  'BUNDLE_PATH' => fetch(:rvm_gem_home),
+  'PATH' => "#{fetch(:rvm_gem_home)}/bin:#{fetch(:rvm_gem_home)}@global/bin:#{fetch(:rvm_ruby_path)}/bin:/home/rails/.rvm/bin:$PATH;",
+}
+
 #require 'bundler/capistrano'
-require "rvm/capistrano"
+#require "rvm/capistrano"
 set :application, "Rynda"
-#set :repository,  "ssh://git@github.com/vivakalman/Rynda.git"
-set :repository,  "git@github.com:vivakalman/Rynda.git"
+set :repository,  "https://github.com/vivakalman/Rynda.git"
+#set :repository,  "git@github.com:vivakalman/Rynda.git"
 set :scm, 'git'
 
 set :user, 'yurry'
