@@ -1,16 +1,16 @@
 #$:.unshift(File.expand_path('./lib', ENV['rvm_path']))
-set :rvm_type, :root
-set :rvm_ruby, "ruby-1.9.3-p327"
-set :base_dir, "/home/yurry"
-set :rvm_gem_home, "#{fetch(:base_dir)}/.rvm/gems/#{fetch(:rvm_ruby)}"
-set :rvm_ruby_path, "#{fetch(:base_dir)}/.rvm/rubies/#{fetch(:rvm_ruby)}"
+#set :rvm_type, :root
+#set :rvm_ruby, "ruby-1.9.3-p327"
+#set :base_dir, "/home/yurry"
+#set :rvm_gem_home, "#{fetch(:base_dir)}/.rvm/gems/#{fetch(:rvm_ruby)}"
+#set :rvm_ruby_path, "#{fetch(:base_dir)}/.rvm/rubies/#{fetch(:rvm_ruby)}"
 require "rvm/capistrano"
-set :default_environment, {
-  'RUBY_VERSION' => fetch(:rvm_ruby),
-  'GEM_HOME' => "#{fetch(:rvm_gem_home)}:#{fetch(:rvm_gem_home)}@global",
-  'BUNDLE_PATH' => fetch(:rvm_gem_home),
-  'PATH' => "#{fetch(:rvm_gem_home)}/bin:#{fetch(:rvm_gem_home)}@global/bin:#{fetch(:rvm_ruby_path)}/bin:/home/rails/.rvm/bin:$PATH;",
-}
+#set :default_environment, {
+#  'RUBY_VERSION' => fetch(:rvm_ruby),
+#  'GEM_HOME' => "#{fetch(:rvm_gem_home)}:#{fetch(:rvm_gem_home)}@global",
+#  'BUNDLE_PATH' => fetch(:rvm_gem_home),
+#  'PATH' => "#{fetch(:rvm_gem_home)}/bin:#{fetch(:rvm_gem_home)}@global/bin:#{fetch(:rvm_ruby_path)}/bin:/home/rails/.rvm/bin:$PATH;",
+#}
 
 #require 'bundler/capistrano'
 

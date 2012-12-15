@@ -4,5 +4,5 @@
 require File.expand_path('../config/application', __FILE__)
 require 'rake/dsl_definition'
 require 'rake'
-
+require 'rdoc/task'
 Rynda::Application.load_tasks
