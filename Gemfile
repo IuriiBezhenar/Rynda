@@ -10,7 +10,7 @@ gem 'rails', '3.0.7'
 gem 'will_paginate'
 gem 'jquery-rails'
 gem 'jquery_datepicker'
-gem rdoc
+gem 'rdoc'
 
 group :development do
   gem 'rspec-rails', '2.6.0'
