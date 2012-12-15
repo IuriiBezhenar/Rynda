@@ -17,6 +17,8 @@ require "rvm/capistrano"
 set :application, "Rynda"
 #set :repository,  "https://github.com/vivakalman/Rynda.git"
 set :repository,  "git@github.com:vivakalman/Rynda.git"
+#set :repository,  "yurry@192.168.88.5:/home/yurry/Rynda/Rynda.git"
+#set :local_repository, "vagrant@33.33.13.38:/etc/rynda/rynda.git"
 set :scm, 'git'
 
 set :user, 'yurry'

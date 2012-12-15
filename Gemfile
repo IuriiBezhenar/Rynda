@@ -5,8 +5,8 @@ gem 'rails', '3.0.7'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3-ruby', '1.3.2', :require => 'sqlite3'
-# gem 'pg'
+#gem 'sqlite3-ruby', '1.3.2', :require => 'sqlite3'
+ gem 'pg'
 gem 'will_paginate'
 gem 'jquery-rails'
 gem 'jquery_datepicker'
@@ -16,6 +16,7 @@ group :development do
   gem 'rspec-rails', '2.6.0'
   gem 'annotate-models'
   gem 'faker'
+  gem 'rake', '~> 0.9.2.2'
 end
 
 group :test do
